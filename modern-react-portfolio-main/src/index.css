@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+:target {
+  scroll-margin-top: 100px;
+}
+
+@theme {
+  /* Apple Titanium & Editorial Studio Palette (Non-Gaming, Sophisticated & Warm) */
+  --color-dark-bg: #09090b;       /* Deep Zinc Obsidian */
+  --color-accent-blue: #f97316;   /* Warm Sunset Coral / Amber (Primary Editorial Accent) */
+  --color-accent-purple: #6366f1; /* Soft Studio Indigo (Secondary Accent) */
+  --color-glass: rgba(24, 24, 27, 0.72);
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-zinc-200 antialiased selection:bg-accent-blue/30 selection:text-white overflow-x-hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #09090b;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #27272a;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f97316;
+  }
+}
+
+.perspective-1200 {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
